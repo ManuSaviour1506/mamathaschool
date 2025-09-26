@@ -1,0 +1,11 @@
+# Node.js dependencies
+/node_modules
+
+# Environment variables
+.env
+
+# Vite build output
+/dist
+
+# Logs and npm debug files
+npm-debug.log*
