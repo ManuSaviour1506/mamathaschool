@@ -8,17 +8,11 @@ const imagekit = new ImageKit({
     urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT
 });
 
-// @desc    Get all gallery images
-// @route   GET /api/gallery
-// @access  Public
 const getPhotos = asyncHandler(async (req, res) => {
     const images = await Gallery.find({}).sort({ createdAt: -1 });
     res.status(200).json(images);
 });
 
-// @desc    Add a new image to the gallery
-// @route   POST /api/gallery
-// @access  Private
 const uploadPhoto = asyncHandler(async (req, res) => {
     const { file } = req.body;
     
@@ -45,9 +39,6 @@ const uploadPhoto = asyncHandler(async (req, res) => {
     }
 });
 
-// @desc    Delete an image from the gallery
-// @route   DELETE /api/gallery/:id
-// @access  Private
 const deletePhoto = asyncHandler(async (req, res) => {
     const image = await Gallery.findById(req.params.id);
     if (!image) {
