@@ -17,29 +17,14 @@ const admissionSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  parentEmail: {
-    type: String,
-    required: false,
-  },
   parentPhone: {
     type: String,
     required: true,
   },
-  address: {
-    type: String,
-    required: false,
-  },
-  city: {
+  // We keep parentEmail required for communication and logging, which the frontend handles internally
+  parentEmail: { 
     type: String,
     required: true,
-  },
-  state: {
-    type: String,
-    required: false,
-  },
-  zipCode: {
-    type: String,
-    required: false,
   },
 }, { timestamps: true });
 

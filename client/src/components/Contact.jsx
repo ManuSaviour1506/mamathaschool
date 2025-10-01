@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const contactStyles = {
-  background: '#abbaab',
-  background: '-webkit-linear-gradient(to right, #ffffff, #abbaab)',
-  background: 'linear-gradient(to right, #ffffff, #abbaab)',
-};
-
 function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -19,7 +13,7 @@ function Contact() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({
+    setFormData((prevState) => ({
       ...prevState,
       [name]: value,
     }));
@@ -32,102 +26,149 @@ function Contact() {
 
     try {
       await axios.post('http://localhost:5001/api/contact', formData);
-      setSubmitMessage('Thank you for your message! We will get back to you shortly.');
+      setSubmitMessage(
+        'Thank you for your message! We will get back to you shortly.'
+      );
       setFormData({ name: '', email: '', message: '' });
     } catch (err) {
-      setSubmitMessage(err.response?.data?.message || 'Failed to send message. Please try again.');
+      setSubmitMessage(
+        err.response?.data?.message ||
+          'Failed to send message. Please check your network.'
+      );
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div id="contact" style={contactStyles} className="min-h-screen p-4 md:p-8 lg:p-16 text-gray-900 dark:text-white">
-      
-      {/* Hero Section */}
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold mb-2">Contact Us</h1>
-        <p className="text-lg text-gray-600 dark:text-gray-400">
-          We'd love to hear from you!
-        </p>
-      </div>
-      
-      {submitMessage && (
-        <div className={`p-4 mb-6 rounded-md text-center ${submitMessage.includes('Thank you') ? 'bg-green-100 text-green-700 dark:bg-green-800 dark:text-green-200' : 'bg-red-100 text-red-700 dark:bg-red-800 dark:text-red-200'}`}>
-          {submitMessage}
-        </div>
-      )}
-
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
-        {/* Contact Form Section */}
-        <div className="p-8 bg-white dark:bg-gray-800 rounded-lg shadow-md">
-          <h2 className="text-2xl font-semibold mb-6">Send us a Message</h2>
-          <form onSubmit={handleSubmit}>
-            <div className="mb-4">
-              <label htmlFor="name" className="block text-sm font-medium mb-1">
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-              />
-            </div>
-            <div className="mb-4">
-              <label htmlFor="email" className="block text-sm font-medium mb-1">
-                Email Address
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-              />
-            </div>
-            <div className="mb-6">
-              <label htmlFor="message" className="block text-sm font-medium mb-1">
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                rows="4"
-                className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-              ></textarea>
-            </div>
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full p-3 bg-blue-600 text-white font-bold rounded-md hover:bg-blue-700 transition-colors disabled:bg-gray-400"
-            >
-              {loading ? 'Sending...' : 'Send Message'}
-            </button>
-          </form>
+    <div
+      id="contact"
+      className="py-16 bg-white dark:bg-gray-900 text-text-dark dark:text-white transition-colors duration-500"
+    >
+      <div className="container mx-auto px-4 md:px-8">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-extrabold mb-2 text-primary-indigo dark:text-accent-gold">
+            Get In Touch
+          </h1>
+          <p className="text-lg text-gray-600 dark:text-gray-400">
+            We are here to answer your questions.
+          </p>
         </div>
 
-        {/* Google Map Section */}
-        <div className="rounded-lg overflow-hidden shadow-md h-96">
-          <h2 className="text-2xl font-semibold mb-4 hidden md:block">Find Us on the Map</h2>
-          <iframe 
-            title="school-location"
-            src="http://googleusercontent.com/maps/embed?pb=!1m18!1m12!1m3!1d3408.204554316682!2d77.01423851503943!3d31.52044398135804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3905470000000001%3A0x6b8a8b1a8d0f11d1!2sNational%20Public%20School%2C%20Manali!5e0!3m2!1sen!2sin!4v1628173491953!5m2!1sen!2sin"
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen=""
-            loading="lazy"
-            className="rounded-lg shadow-lg"
-          ></iframe>
+        {submitMessage && (
+          <div
+            className={`p-4 mb-6 rounded-lg text-center font-medium max-w-2xl mx-auto ${
+              submitMessage.includes('Thank you')
+                ? 'bg-green-100 text-green-700 dark:bg-green-800 dark:text-green-200'
+                : 'bg-red-100 text-red-700 dark:bg-red-800 dark:text-red-200'
+            }`}
+          >
+            {submitMessage}
+          </div>
+        )}
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          {/* Contact Information Column */}
+          <div className="lg:col-span-1 p-6 bg-primary-indigo text-white rounded-xl shadow-2xl">
+            <h3 className="text-2xl font-bold mb-4 border-b-2 border-accent-gold pb-2">
+              Our Details
+            </h3>
+            <div className="space-y-4 text-lg">
+              <p>
+                <strong>Address:</strong> Chataparru, West Godavari ,534004
+              </p>
+              <p>
+                <strong>Email:</strong> info@mamathaschool.edu
+              </p>
+              <p>
+                <strong>Phone:</strong> (123) 456-7890
+              </p>
+            </div>
+
+            <h3 className="text-2xl font-bold mt-8 mb-4 border-b-2 border-accent-gold pb-2">
+              Location
+            </h3>
+            <div className="rounded-lg overflow-hidden h-64 shadow-xl">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3821.605444701561!2d81.16390071145018!3d16.69661608401113!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a363f50ff3d1bf1%3A0x5f1261ae62d5c730!2sSri%20Mamatha%20School!5e0!3m2!1sen!2sin!4v1759252664854!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </div>
+
+          {/* Contact Form Column */}
+          <div className="lg:col-span-2 p-8 bg-bg-light dark:bg-gray-800 rounded-xl shadow-2xl border-t-8 border-accent-gold">
+            <h2 className="text-3xl font-bold mb-6 text-primary-indigo dark:text-accent-gold">
+              Send Us A Message
+            </h2>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium mb-1"
+                  >
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full p-3 border rounded-lg focus:ring-accent-gold focus:border-accent-gold dark:bg-gray-700 dark:border-gray-600 transition duration-200"
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium mb-1"
+                  >
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full p-3 border rounded-lg focus:ring-accent-gold focus:border-accent-gold dark:bg-gray-700 dark:border-gray-600 transition duration-200"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium mb-1"
+                >
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows="4"
+                  className="w-full p-3 border rounded-lg focus:ring-accent-gold focus:border-accent-gold dark:bg-gray-700 dark:border-gray-600 transition duration-200"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                disabled={loading}
+                className="p-4 bg-primary-indigo text-white font-bold rounded-full shadow-xl hover:bg-accent-gold hover:text-text-dark transition-all duration-300 transform hover:scale-[1.01] disabled:bg-gray-500"
+              >
+                {loading ? 'Sending...' : 'Send Message'}
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

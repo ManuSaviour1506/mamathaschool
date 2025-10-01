@@ -3,26 +3,26 @@ const Admission = require('../models/Admission');
 const sendMail = require('../utils/mailer');
 
 const submitAdmission = asyncHandler(async (req, res) => {
-  const { studentName, dateOfBirth, gradeApplyingFor, parentName, parentEmail, parentPhone, address, city, state, zipCode } = req.body;
+  // Destructure only the fields currently sent by the simplified frontend form
+  const { studentName, dateOfBirth, gradeApplyingFor, parentName, parentPhone, parentEmail } = req.body;
 
-  if (!studentName || !dateOfBirth || !gradeApplyingFor || !parentName || !parentEmail || !parentPhone || !address || !city || !state || !zipCode) {
+  // Validate only the simplified set of required fields
+  if (!studentName || !dateOfBirth || !gradeApplyingFor || !parentName || !parentPhone || !parentEmail) {
     res.status(400);
     throw new Error('Please fill in all required fields.');
   }
 
+  // Create the new Admission record with the simplified data structure
   const newAdmission = await Admission.create({
     studentName,
     dateOfBirth,
     gradeApplyingFor,
     parentName,
-    parentEmail,
     parentPhone,
-    address,
-    city,
-    state,
-    zipCode,
+    parentEmail,
   });
 
+  // Send email notification to admin
   const adminEmail = process.env.EMAIL_USER;
   const emailSubject = `New Admission Application from ${studentName}`;
   const emailHtml = `
@@ -32,6 +32,7 @@ const submitAdmission = asyncHandler(async (req, res) => {
       <li><strong>Student Name:</strong> ${studentName}</li>
       <li><strong>Parent Name:</strong> ${parentName}</li>
       <li><strong>Parent Email:</strong> ${parentEmail}</li>
+      <li><strong>Phone Number:</strong> ${parentPhone}</li>
       <li><strong>Grade Applying For:</strong> ${gradeApplyingFor}</li>
     </ul>
     <p>Please log in to the admin dashboard to view the full details.</p>

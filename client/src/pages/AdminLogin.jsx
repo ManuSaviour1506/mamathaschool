@@ -1,32 +1,27 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-// The useAuth hook is not needed here since the token is saved directly
-// import { useAuth } from '../hooks/useAuth';
+import { useAuth } from '../hooks/useAuth';
 
 const adminLoginStyles = {
   background: '#abbaab',
-  background: '-webkit-linear-gradient(to right, #ffffff, #abbaab)',
-  background: 'linear-gradient(to right, #ffffff, #abbaab)',
+  backgroundImage: 'linear-gradient(to right, #ffffff, #abbaab)',
 };
 
 function AdminLogin() {
-  const [username, setUsername] = useState(''); // Corrected from email to username
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
-  // No need to destructure useAuth here, as the token is handled in localStorage directly
-  // const { saveToken } = useAuth(); 
+  // const { saveToken } = useAuth(); // Removed unused destructuring
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
     try {
-      // Corrected the payload to send 'username'
       const response = await axios.post('http://localhost:5001/api/auth/login', { username, password });
       
-      // Save the token directly to localStorage
       localStorage.setItem('adminToken', response.data.token);
       
       navigate('/admin/dashboard');
@@ -38,8 +33,8 @@ function AdminLogin() {
 
   return (
     <div style={adminLoginStyles} className="min-h-screen flex items-center justify-center p-4">
-      <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-8 w-full max-w-md">
-        <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-6">Admin Login</h2>
+      <div className="bg-white dark:bg-gray-800 shadow-lg rounded-xl p-8 w-full max-w-md">
+        <h2 className="text-3xl font-bold text-center text-primary-indigo dark:text-accent-gold mb-6">Admin Login</h2>
         {error && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">{error}</div>}
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -47,9 +42,9 @@ function AdminLogin() {
               Username
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-primary-indigo transition duration-200"
               id="username"
-              type="text" // Changed type to text for username
+              type="text"
               placeholder="Enter your username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
@@ -61,7 +56,7 @@ function AdminLogin() {
               Password
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 mb-3 leading-tight focus:outline-none focus:ring-2 focus:ring-primary-indigo transition duration-200"
               id="password"
               type="password"
               placeholder="**********"
@@ -70,18 +65,18 @@ function AdminLogin() {
               required
             />
           </div>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between mt-6">
             <button
-              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition-colors duration-300"
+              className="bg-primary-indigo hover:bg-accent-gold text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
               type="submit"
             >
               Sign In
             </button>
             <Link
               to="/"
-              className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+              className="inline-block align-baseline font-semibold text-sm text-primary-indigo hover:text-accent-gold transition-colors duration-200"
             >
-              Back to Home
+              ← Back to Home
             </Link>
           </div>
         </form>

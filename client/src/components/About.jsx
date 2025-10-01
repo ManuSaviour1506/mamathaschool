@@ -1,51 +1,51 @@
 import React from 'react';
 
-const aboutStyles = {
-  background: '#abbaab',
-  background: '-webkit-linear-gradient(to right, #ffffff, #abbaab)',
-  background: 'linear-gradient(to right, #ffffff, #abbaab)',
-};
+// Removed the redundant style object
 
 function About() {
   return (
-    <div id="about" style={aboutStyles} className="min-h-screen text-gray-900 dark:text-white py-16 px-4 md:px-8 lg:px-16">
-      
-      {/* Top Section: Who We Are */}
-      <div className="container mx-auto flex flex-col md:flex-row items-center gap-8 bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg mb-16">
-        <div className="md:w-1/3 flex-shrink-0">
-          <img 
-            src="https://ik.imagekit.io/your_imagekit_id/teacher_image.jpg"
-            alt="A picture of a teacher"
-            className="w-full h-auto object-cover rounded-lg shadow-lg"
-          />
-        </div>
-        <div className="md:w-2/3">
-          <h2 className="text-3xl font-bold mb-4">WHO WE ARE</h2>
-          <p className="text-lg leading-relaxed">
-            The world today is a global village and people are its citizens. As boundaries of location, people and time cease to exist, it is of utmost importance that we move with the times. At MAMATHA SCHOOL, we have created a unique blend of world-class curricula, contemporary teaching methodologies, and equal focus on intellectual, physical and personality development, resulting in future leaders who are ready to take on the world. Today, we stand as the force behind creating countless world-class doctors, engineers, IAS officers, chartered accountants, and so much more.
-          </p>
-        </div>
-      </div>
-      
-      {/* Bottom Section: Vision and Mission */}
-      <div className="container mx-auto flex flex-col md:flex-row items-center gap-8 text-white p-8 rounded-lg shadow-lg" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
-        
-        {/* Vision Section */}
-        <div className="md:w-1/2 flex flex-col items-center">
-          <h3 className="text-4xl font-bold mb-4">VISION</h3>
-          <p className="text-lg text-center leading-relaxed max-w-lg">
-            We endeavor to be the right mentor for IIT-JEE aspirants, while also helping them develop a global perspective, with a keen interest in community life. We prepare students for competitive exams by providing in-depth knowledge of various subjects at an early age.
-          </p>
+    <div id="about" className="py-16 bg-bg-light dark:bg-bg-dark-slate text-text-dark transition-colors duration-500">
+      <div className="container mx-auto px-4 md:px-8">
+        <h2 className="text-4xl font-extrabold text-center mb-12 text-primary-indigo dark:text-accent-gold">About MAMATHA SCHOOL</h2>
+
+        {/* Section 1: Who We Are - Image Left */}
+        <div className="flex flex-col md:flex-row items-center gap-12 mb-16 bg-white dark:bg-gray-800 p-8 rounded-xl shadow-2xl transition-all duration-300 hover:shadow-card-hover">
+          <div className="md:w-2/5 flex-shrink-0">
+            <img 
+              src="https://res.cloudinary.com/ddgfjerss/image/upload/v1759251463/Screenshot_2025-09-29_at_1.14.25_AM_x4byzg.png"
+              alt="Teacher working with students"
+              className="w-full h-auto object-cover rounded-lg shadow-xl transition-transform duration-500 hover:scale-[1.02]"
+            />
+          </div>
+          <div className="md:w-3/5 text-text-dark dark:text-white">
+            <h3 className="text-3xl font-bold mb-4 text-primary-indigo dark:text-accent-gold border-b-2 border-accent-gold pb-2">WHO WE ARE</h3>
+            <p className="text-lg leading-relaxed border-l-4 border-accent-gold pl-4">
+              The world today is a global village and people are its citizens. As boundaries of location, people and time cease to exist, it is of utmost importance that we move with the times. At MAMATHA SCHOOL, we have created a unique blend of world-class curricula, contemporary teaching methodologies, and equal focus on intellectual, physical and personality development, resulting in future leaders who are ready to take on the world.
+            </p>
+            <p className="text-md mt-4 text-gray-600 dark:text-gray-400">
+                Our legacy includes producing world-class professionals across various fields, a testament to our dedication to excellence.
+            </p>
+          </div>
         </div>
         
-        {/* Mission Section */}
-        <div className="md:w-1/2 flex flex-col items-center">
-          <h3 className="text-4xl font-bold mb-4">MISSION</h3>
-          <p className="text-lg text-center leading-relaxed max-w-lg">
-            Our goal is to focus on the holistic development of each child, and to give them a competitive edge with the help of an extensive curriculum and dynamic teaching methodologies.
-          </p>
+        {/* Section 2: Vision and Mission - Card Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Vision Card */}
+            <div className="p-8 bg-primary-indigo dark:bg-gray-700 text-white rounded-xl shadow-2xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-card-hover">
+                <h3 className="text-4xl font-extrabold mb-4 border-b-4 border-accent-gold pb-2">VISION</h3>
+                <p className="text-lg leading-relaxed">
+                    To be the leading educational institution recognized globally for fostering critical thinkers, compassionate citizens, and lifelong learners, prepared for the challenges of the 21st century.
+                </p>
+            </div>
+            
+            {/* Mission Card */}
+            <div className="p-8 bg-primary-indigo dark:bg-gray-700 text-white rounded-xl shadow-2xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-card-hover">
+                <h3 className="text-4xl font-extrabold mb-4 border-b-4 border-accent-gold pb-2">MISSION</h3>
+                <p className="text-lg leading-relaxed">
+                    To provide a holistic, rigorous, and personalized learning environment that maximizes the potential of every student through innovative curriculum and technology integration.
+                </p>
+            </div>
         </div>
-        
       </div>
     </div>
   );

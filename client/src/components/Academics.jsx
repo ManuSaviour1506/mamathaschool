@@ -1,78 +1,54 @@
 import React from 'react';
 
-const academicsStyles = {
-  background: '#abbaab',
-  background: '-webkit-linear-gradient(to right, #ffffff, #abbaab)',
-  background: 'linear-gradient(to right, #ffffff, #abbaab)',
-};
+// Removed the redundant style object
 
 function Academics() {
   return (
-    <div id="academics" style={academicsStyles} className="text-gray-900 dark:text-white min-h-screen">
-      
-      {/* Hero Section */}
-      <div className="text-center py-24 px-4 md:px-8 lg:px-16">
-        <h1 className="text-5xl md:text-6xl font-extrabold mb-4">Our Innovative Academics</h1>
-        <p className="text-xl md:text-2xl font-light max-w-3xl mx-auto">
-          We go beyond traditional education to inspire curiosity, creativity, and a lifelong love for learning in every student.
+    <div id="academics" className="py-16 px-4 md:px-8 bg-white dark:bg-bg-dark-slate transition-colors duration-500">
+      <div className="container mx-auto">
+        <h2 className="text-4xl font-extrabold text-center mb-4 text-primary-indigo dark:text-accent-gold">Future-Ready Curriculum</h2>
+        <p className="text-xl text-center mb-12 text-gray-600 dark:text-gray-400">
+            Our academic programs are built on innovation, integration, and individual growth.
         </p>
-      </div>
 
-      {/* Philosophy Section */}
-      <section className="py-16 px-4 md:px-8 lg:px-16">
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="md:order-2">
-            <h2 className="text-3xl font-bold mb-4">Our Approach to Education</h2>
-            <p className="text-lg leading-relaxed mb-4">
-              Our curriculum is designed to be dynamic and interdisciplinary, integrating subjects to create a more comprehensive learning experience. We focus on real-world problem-solving and project-based learning.
+        {/* Academic Programs Section */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Program 1: Primary */}
+          <div className="bg-bg-light dark:bg-gray-800 p-8 rounded-xl shadow-lg border-t-8 border-primary-indigo transition-all duration-300 transform hover:scale-[1.02] hover:shadow-card-hover">
+            <h3 className="text-2xl font-bold mb-3 text-primary-indigo dark:text-accent-gold">Primary School (K-5)</h3>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              Focus on foundational literacy, numeracy, and essential socio-emotional skills through hands-on, project-based learning. Includes early exposure to digital citizenship.
             </p>
-            <ul className="list-disc list-inside space-y-2 text-lg">
-              <li>Project-Based Learning</li>
-              <li>Integrated STEM Curriculum</li>
-              <li>Focus on Critical Thinking</li>
-              <li>Global Awareness Programs</li>
-            </ul>
           </div>
-          <div className="md:order-1">
-            <img 
-              src="https://ik.imagekit.io/your_imagekit_id/academics_innovative.jpg"
-              alt="Innovative learning environment"
-              className="w-full h-auto object-cover rounded-lg shadow-lg"
-            />
+          {/* Program 2: Middle */}
+          <div className="bg-bg-light dark:bg-gray-800 p-8 rounded-xl shadow-lg border-t-8 border-accent-gold transition-all duration-300 transform hover:scale-[1.02] hover:shadow-card-hover">
+            <h3 className="text-2xl font-bold mb-3 text-primary-indigo dark:text-accent-gold">Middle School (6-8)</h3>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              Interdisciplinary STEM curriculum. Students engage in design thinking challenges and start specialization in electives like robotics and coding.
+            </p>
+          </div>
+          {/* Program 3: High */}
+          <div className="bg-bg-light dark:bg-gray-800 p-8 rounded-xl shadow-lg border-t-8 border-primary-indigo transition-all duration-300 transform hover:scale-[1.02] hover:shadow-card-hover">
+            <h3 className="text-2xl font-bold mb-3 text-primary-indigo dark:text-accent-gold">High School (9-12)</h3>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              College and career readiness track. Offers advanced placement (AP) style courses and intensive mentorship for university entrance exams and career planning.
+            </p>
           </div>
         </div>
-      </section>
 
-      {/* Academic Features Section */}
-      <section className="py-16 px-4 md:px-8 lg:px-16 text-gray-900 dark:text-white">
-        <div className="container mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-10">Key Academic Programs</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Feature Card 1 */}
-            <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-              <h3 className="text-2xl font-bold mb-3">Early Years Foundation</h3>
-              <p className="text-gray-600 leading-relaxed">
-                A play-based approach to education that builds social, emotional, and cognitive skills through exploration and guided discovery.
-              </p>
-            </div>
-            {/* Feature Card 2 */}
-            <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-              <h3 className="text-2xl font-bold mb-3">STEM Excellence</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Our advanced STEM labs and dedicated faculty prepare students for future careers in science, technology, engineering, and mathematics.
-              </p>
-            </div>
-            {/* Feature Card 3 */}
-            <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-              <h3 className="text-2xl font-bold mb-3">Holistic Development</h3>
-              <p className="text-gray-600 leading-relaxed">
-                We balance academics with arts, sports, and community service to ensure our students grow into well-rounded individuals.
-              </p>
-            </div>
+        <hr className="my-16 border-gray-300 dark:border-gray-700" />
+
+        {/* Departments Section */}
+        <div className="text-center">
+          <h2 className="text-3xl font-semibold mb-8 text-primary-indigo dark:text-accent-gold">Specialized Learning Labs</h2>
+          <div className="flex flex-wrap justify-center gap-6">
+            <span className="bg-primary-indigo text-white px-6 py-3 rounded-full font-medium shadow-md hover:bg-accent-gold hover:text-text-dark transition-all duration-200 cursor-pointer">COMPUTER LABS</span>
+            <span className="bg-primary-indigo text-white px-6 py-3 rounded-full font-medium shadow-md hover:bg-accent-gold hover:text-text-dark transition-all duration-200 cursor-pointer">ABACUS</span>
+            <span className="bg-primary-indigo text-white px-6 py-3 rounded-full font-medium shadow-md hover:bg-accent-gold hover:text-text-dark transition-all duration-200 cursor-pointer">Visual & Performing Arts</span>
+            <span className="bg-primary-indigo text-white px-6 py-3 rounded-full font-medium shadow-md hover:bg-accent-gold hover:text-text-dark transition-all duration-200 cursor-pointer">World Languages</span>
           </div>
         </div>
-      </section>
-      
+      </div>
     </div>
   );
 }

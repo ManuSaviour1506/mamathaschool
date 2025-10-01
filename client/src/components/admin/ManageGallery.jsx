@@ -51,7 +51,8 @@ function ManageGallery() {
     }
 
     try {
-      await axios.post(
+      // NOTE: Ensure your Express JSON limit (50mb) is high enough for the Base64 image
+      const response = await axios.post(
         'http://localhost:5001/api/gallery',
         { file },
         { headers: { Authorization: `Bearer ${token}` } }
@@ -63,7 +64,9 @@ function ManageGallery() {
       setMessage('Photo uploaded successfully!');
       fetchPhotos();
     } catch (err) {
-      setMessage(err.response?.data?.message || 'Failed to upload photo.');
+      // IMPORTANT: Log the error details to the browser console for specific debugging
+      console.error('Upload Error Details:', err.response || err);
+      setMessage(err.response?.data?.message || 'Upload failed. Check server logs.');
     } finally {
       setLoading(false);
     }
@@ -85,39 +88,54 @@ function ManageGallery() {
   };
 
   return (
-    <div className="p-6 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-4">Manage Gallery</h2>
+    <div className="p-6 bg-white dark:bg-bg-dark-slate rounded-lg shadow-xl border-t-4 border-accent-teal transition duration-500">
+      <h2 className="text-2xl font-bold mb-4 text-primary-blue dark:text-white">Manage Gallery</h2>
       
-      <form onSubmit={handleSubmit} className="mb-8 p-6 border dark:border-gray-700 rounded-lg">
-        <h3 className="text-xl font-semibold mb-4">Upload New Photo</h3>
+      {/* Upload Form */}
+      <form onSubmit={handleSubmit} className="mb-8 p-6 bg-gray-50 dark:bg-gray-700 rounded-lg shadow-inner">
+        <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100">Upload New Photo</h3>
         <div className="mb-4">
-          <label htmlFor="file-input" className="block text-sm font-medium mb-1">Image File</label>
-          <input type="file" id="file-input" onChange={handleFileChange} required className="w-full" />
+          <label htmlFor="file-input" className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Image File</label>
+          <input 
+            type="file" 
+            id="file-input" 
+            onChange={handleFileChange} 
+            required 
+            className="w-full text-gray-900 dark:text-white bg-white dark:bg-gray-600 rounded-md p-2 border border-gray-300"
+          />
         </div>
         <button 
           type="submit" 
           disabled={loading || !isFileReady}
-          className="w-full p-2 bg-blue-600 text-white font-bold rounded hover:bg-blue-700 disabled:bg-gray-400"
+          className="w-full p-2 bg-primary-blue text-white font-bold rounded-full hover:bg-accent-teal transition-all duration-300 disabled:bg-gray-500 transform hover:scale-[1.01]"
         >
           {loading ? 'Uploading...' : 'Upload Photo'}
         </button>
       </form>
-      {message && <p className="mt-4 text-center">{message}</p>}
+      {message && <p className="mt-4 text-center text-accent-teal font-medium">{message}</p>}
 
-      <h3 className="text-xl font-semibold mb-4">Existing Photos</h3>
+      {/* Photo List */}
+      <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100">Existing Photos ({photos.length})</h3>
       {fetchError && <p className="text-red-500 mb-4">{fetchError}</p>}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {photos.length > 0 ? (
           photos.map((photo) => (
-            <div key={photo._id} className="relative p-2 border dark:border-gray-700 rounded-lg shadow-sm">
-              <img src={photo.imageUrl} alt="School Photo" className="w-full h-40 object-cover rounded mb-2" />
-              <button onClick={() => handleDelete(photo._id)} className="absolute top-0 right-0 p-1 bg-red-600 text-white rounded-tr-lg rounded-bl-lg">
+            <div key={photo._id} className="relative group overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5">
+              <img 
+                src={photo.imageUrl} 
+                alt="School Gallery Image" 
+                className="w-full h-36 md:h-48 object-cover" 
+              />
+              <button 
+                onClick={() => handleDelete(photo._id)} 
+                className="absolute top-1 right-1 p-1 bg-red-600 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity text-sm hover:bg-red-700"
+              >
                 &times;
               </button>
             </div>
           ))
         ) : (
-          <p className="col-span-full text-center text-gray-500">No photos have been uploaded yet.</p>
+          <p className="col-span-full text-center text-gray-500 p-4">No photos have been uploaded yet.</p>
         )}
       </div>
     </div>
