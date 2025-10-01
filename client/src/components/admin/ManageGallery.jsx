@@ -13,7 +13,7 @@ function ManageGallery() {
 
   const fetchPhotos = async () => {
     try {
-      const response = await axios.get('http://localhost:5001/api/gallery');
+      const response = await axios.get('https://mamathaschool.onrender.com/api/gallery');
       setPhotos(response.data);
       setFetchError(null);
     } catch (err) {
