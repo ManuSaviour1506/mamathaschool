@@ -7,6 +7,7 @@ const galleryRoutes = require('./routes/gallery.routes');
 const testimonialRoutes = require('./routes/testimonial.routes');
 const admissionRoutes = require('./routes/admission.routes');
 const contactRoutes = require('./routes/contact.routes');
+const path = require('path');
 
 dotenv.config();
 
@@ -23,6 +24,15 @@ app.use('/api/gallery', galleryRoutes);
 app.use('/api/testimonials', testimonialRoutes);
 app.use('/api/admission', admissionRoutes);
 app.use('/api/contact', contactRoutes);
+
+// Serve client files in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '..', 'client', 'dist', 'index.html'));
+  });
+}
 
 app.get('/', (req, res) => {
   res.send('API is running...');
