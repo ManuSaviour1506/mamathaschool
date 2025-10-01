@@ -41,7 +41,7 @@ function AdmissionForm() {
 
     try {
       // NOTE: You might need to update this URL if your server is running on a different port
-      await axios.post('http://localhost:5001/api/admission', submissionData);
+      await axios.post('https://mamathaschool.onrender.com/api/admission', submissionData);
       setMessage('Application submitted successfully! We will contact you soon.');
       
       // Reset only the visible form fields

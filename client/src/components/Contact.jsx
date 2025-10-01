@@ -25,7 +25,7 @@ function Contact() {
     setSubmitMessage('');
 
     try {
-      await axios.post('http://localhost:5001/api/contact', formData);
+      await axios.post('https://mamathaschool.onrender.com/api/contact', formData);
       setSubmitMessage(
         'Thank you for your message! We will get back to you shortly.'
       );

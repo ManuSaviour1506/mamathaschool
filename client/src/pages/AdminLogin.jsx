@@ -20,7 +20,7 @@ function AdminLogin() {
     setError('');
 
     try {
-      const response = await axios.post('http://localhost:5001/api/auth/login', { username, password });
+      const response = await axios.post('https://mamathaschool.onrender.com/api/auth/login', { username, password });
       
       localStorage.setItem('adminToken', response.data.token);
       
