@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+const admissionFormStyles = {
+  background: '#abbaab',
+  background: '-webkit-linear-gradient(to right, #ffffff, #abbaab)',
+  background: 'linear-gradient(to right, #ffffff, #abbaab)',
+};
+
 function AdmissionForm() {
   const [formData, setFormData] = useState({
     studentName: '',
@@ -54,7 +60,7 @@ function AdmissionForm() {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen p-4 md:p-8 lg:p-16">
+    <div id="admission" style={admissionFormStyles} className="min-h-screen p-4 md:p-8 lg:p-16 text-gray-900 dark:text-white">
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold mb-2">Online Admission Form</h1>
         <p className="text-lg text-gray-600 dark:text-gray-400">
@@ -68,7 +74,7 @@ function AdmissionForm() {
         </div>
       )}
 
-      <div className="container mx-auto max-w-2xl p-8 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md">
+      <div className="container mx-auto max-w-2xl p-8 bg-white dark:bg-gray-800 rounded-lg shadow-md">
         <form onSubmit={handleSubmit}>
           {/* Student Information */}
           <h2 className="text-2xl font-semibold mb-4">Student Information</h2>

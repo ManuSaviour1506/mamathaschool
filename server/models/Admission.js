@@ -19,7 +19,7 @@ const admissionSchema = new mongoose.Schema({
   },
   parentEmail: {
     type: String,
-    required: true,
+    required: false,
   },
   parentPhone: {
     type: String,
@@ -27,7 +27,7 @@ const admissionSchema = new mongoose.Schema({
   },
   address: {
     type: String,
-    required: true,
+    required: false,
   },
   city: {
     type: String,
@@ -35,11 +35,11 @@ const admissionSchema = new mongoose.Schema({
   },
   state: {
     type: String,
-    required: true,
+    required: false,
   },
   zipCode: {
     type: String,
-    required: true,
+    required: false,
   },
 }, { timestamps: true });
 

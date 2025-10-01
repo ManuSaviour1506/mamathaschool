@@ -1,12 +1,14 @@
 import React from 'react';
 
-function Academics() {
-  const academicsStyles = {
-    background: 'linear-gradient(to right, #4b6cb7, #182848)',
-  };
+const academicsStyles = {
+  background: '#abbaab',
+  background: '-webkit-linear-gradient(to right, #ffffff, #abbaab)',
+  background: 'linear-gradient(to right, #ffffff, #abbaab)',
+};
 
+function Academics() {
   return (
-    <div id="academics" style={academicsStyles} className="text-white min-h-screen">
+    <div id="academics" style={academicsStyles} className="text-gray-900 dark:text-white min-h-screen">
       
       {/* Hero Section */}
       <div className="text-center py-24 px-4 md:px-8 lg:px-16">
@@ -17,7 +19,7 @@ function Academics() {
       </div>
 
       {/* Philosophy Section */}
-      <section className="py-16 px-4 md:px-8 lg:px-16 bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+      <section className="py-16 px-4 md:px-8 lg:px-16">
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="md:order-2">
             <h2 className="text-3xl font-bold mb-4">Our Approach to Education</h2>
@@ -42,26 +44,26 @@ function Academics() {
       </section>
 
       {/* Academic Features Section */}
-      <section className="py-16 px-4 md:px-8 lg:px-16 text-white" style={academicsStyles}>
+      <section className="py-16 px-4 md:px-8 lg:px-16 text-gray-900 dark:text-white">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold mb-10">Key Academic Programs</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Feature Card 1 */}
-            <div className="bg-white text-gray-900 p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+            <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
               <h3 className="text-2xl font-bold mb-3">Early Years Foundation</h3>
               <p className="text-gray-600 leading-relaxed">
                 A play-based approach to education that builds social, emotional, and cognitive skills through exploration and guided discovery.
               </p>
             </div>
             {/* Feature Card 2 */}
-            <div className="bg-white text-gray-900 p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+            <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
               <h3 className="text-2xl font-bold mb-3">STEM Excellence</h3>
               <p className="text-gray-600 leading-relaxed">
                 Our advanced STEM labs and dedicated faculty prepare students for future careers in science, technology, engineering, and mathematics.
               </p>
             </div>
             {/* Feature Card 3 */}
-            <div className="bg-white text-gray-900 p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+            <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
               <h3 className="text-2xl font-bold mb-3">Holistic Development</h3>
               <p className="text-gray-600 leading-relaxed">
                 We balance academics with arts, sports, and community service to ensure our students grow into well-rounded individuals.

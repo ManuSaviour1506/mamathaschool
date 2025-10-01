@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+const galleryStyles = {
+  background: '#abbaab',
+  background: '-webkit-linear-gradient(to right, #ffffff, #abbaab)',
+  background: 'linear-gradient(to right, #ffffff, #abbaab)',
+};
+
 function Gallery() {
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -26,7 +32,7 @@ function Gallery() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-white dark:bg-gray-900">
+      <div style={galleryStyles} className="min-h-screen flex items-center justify-center">
         <p className="text-xl text-gray-800 dark:text-gray-200">Loading...</p>
       </div>
     );
@@ -34,14 +40,14 @@ function Gallery() {
 
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-white dark:bg-gray-900">
+      <div style={galleryStyles} className="min-h-screen flex items-center justify-center">
         <p className="text-xl text-red-500">{error}</p>
       </div>
     );
   }
 
   return (
-    <div id="gallery" className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen p-4 md:p-8 lg:p-16">
+    <div id="gallery" style={galleryStyles} className="text-gray-900 dark:text-white min-h-screen p-4 md:p-8 lg:p-16">
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold mb-2">School Gallery</h1>
         <p className="text-lg text-gray-600 dark:text-gray-400">

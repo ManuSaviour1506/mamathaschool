@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+const contactStyles = {
+  background: '#abbaab',
+  background: '-webkit-linear-gradient(to right, #ffffff, #abbaab)',
+  background: 'linear-gradient(to right, #ffffff, #abbaab)',
+};
+
 function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -36,7 +42,7 @@ function Contact() {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen p-4 md:p-8 lg:p-16">
+    <div id="contact" style={contactStyles} className="min-h-screen p-4 md:p-8 lg:p-16 text-gray-900 dark:text-white">
       
       {/* Hero Section */}
       <div className="text-center mb-12">
@@ -54,7 +60,7 @@ function Contact() {
 
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
         {/* Contact Form Section */}
-        <div className="p-8 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md">
+        <div className="p-8 bg-white dark:bg-gray-800 rounded-lg shadow-md">
           <h2 className="text-2xl font-semibold mb-6">Send us a Message</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
