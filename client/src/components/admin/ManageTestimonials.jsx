@@ -10,7 +10,7 @@ function ManageTestimonials() {
 
   const fetchTestimonials = async () => {
     try {
-      const response = await axios.get('http://localhost:5001/api/testimonials/admin', {
+      const response = await axios.get('https://mamathaschool.onrender.com/api/testimonials/admin', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setTestimonials(response.data);
