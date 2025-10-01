@@ -10,7 +10,7 @@ function ManageAdmissions() {
 
   const fetchAdmissions = async () => {
     try {
-      const response = await axios.get('http://localhost:5001/api/admission', {
+      const response = await axios.get('https://mamathaschool.onrender.com/api/admission', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setAdmissions(response.data);
