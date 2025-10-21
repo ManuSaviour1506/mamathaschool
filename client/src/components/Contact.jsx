@@ -78,10 +78,10 @@ function Contact() {
                 <strong>Address:</strong> Chataparru, West Godavari ,534004
               </p>
               <p>
-                <strong>Email:</strong> info@mamathaschool.edu
+                <strong>Email:</strong>srimamathaschool@gmail.com
               </p>
               <p>
-                <strong>Phone:</strong> (123) 456-7890
+                <strong>Phone:</strong> +91 99892 77570, +91 94413 45374
               </p>
             </div>
 

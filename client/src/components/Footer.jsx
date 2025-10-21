@@ -30,8 +30,9 @@ function Footer() {
           <h3 className="text-xl font-bold mb-4 border-b-2 border-accent-gold pb-1">Contact Us</h3>
           <div className="space-y-2 text-sm">
             <p>Chataparru, West Godavari, 534004</p>
-            <p>Email: <a href="mailto:info@school.edu" className="hover:text-accent-gold">manusaviour5@gmail.com</a></p>
-            <p>Phone: 6305748682</p>
+            <p>Email: <a href="mailto:srimamathaschool@gmail.com" className="hover:text-accent-gold">srimamathaschool@gmail.com</a></p>
+            <p>Phone: +91 99892 77570</p>
+            <p>Phone: +91 94413 45374</p>
           </div>
         </div>
         

@@ -13,9 +13,11 @@ function AdmissionForm() {
 
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
+  
+  // URL for the promotional/form side image (Placeholder URL)
+  const admissionImageUrl = "https://res.cloudinary.com/ddgfjerss/image/upload/v1760886716/WhatsApp_Image_2025-10-17_at_11.52.08_nminmp.jpg";
 
   // Helper function to generate a temporary email address for the DB since it's required for the server
-  // NOTE: You should ideally keep the real parentEmail field to contact them, but for this simplified request, we handle it internally.
   const generateTempEmail = () => {
     return `${formData.studentName.replace(/\s/g, '_').toLowerCase()}-${Date.now()}@temp.com`;
   };
@@ -40,7 +42,6 @@ function AdmissionForm() {
     };
 
     try {
-      // NOTE: You might need to update this URL if your server is running on a different port
       await axios.post('https://mamathaschool.onrender.com/api/admission', submissionData);
       setMessage('Application submitted successfully! We will contact you soon.');
       
@@ -71,51 +72,65 @@ function AdmissionForm() {
         </div>
         
         {message && (
-          <div className={`p-4 mb-6 rounded-lg text-center font-medium max-w-2xl mx-auto ${message.includes('successfully') ? 'bg-green-100 text-green-700 dark:bg-green-800 dark:text-green-200' : 'bg-red-100 text-red-700 dark:bg-red-800 dark:text-red-200'}`}>
+          <div className={`p-4 mb-6 rounded-lg text-center font-medium max-w-5xl mx-auto ${message.includes('successfully') ? 'bg-green-100 text-green-700 dark:bg-green-800 dark:text-green-200' : 'bg-red-100 text-red-700 dark:bg-red-800 dark:text-red-200'}`}>
             {message}
           </div>
         )}
 
-        <div className="max-w-4xl mx-auto p-8 bg-white dark:bg-gray-800 rounded-xl shadow-2xl border-t-8 border-primary-indigo">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Student Information */}
-            <h2 className="text-2xl font-semibold border-b pb-2 text-primary-indigo dark:text-accent-gold">1. Student Details</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div>
-                <label htmlFor="studentName" className="block text-sm font-medium mb-1">Full Name</label>
-                <input type="text" id="studentName" name="studentName" value={formData.studentName} onChange={handleChange} required className="w-full p-3 border rounded-lg focus:ring-accent-gold focus:border-accent-gold dark:bg-gray-700 dark:border-gray-600 transition duration-200" />
-              </div>
-              <div>
-                <label htmlFor="dateOfBirth" className="block text-sm font-medium mb-1">Date of Birth</label>
-                <input type="date" id="dateOfBirth" name="dateOfBirth" value={formData.dateOfBirth} onChange={handleChange} required className="w-full p-3 border rounded-lg focus:ring-accent-gold focus:border-accent-gold dark:bg-gray-700 dark:border-gray-600 transition duration-200" />
-              </div>
-              <div>
-                <label htmlFor="gradeApplyingFor" className="block text-sm font-medium mb-1">Grade Applying For</label>
-                <input type="text" id="gradeApplyingFor" name="gradeApplyingFor" value={formData.gradeApplyingFor} onChange={handleChange} required className="w-full p-3 border rounded-lg focus:ring-accent-gold focus:border-accent-gold dark:bg-gray-700 dark:border-gray-600 transition duration-200" />
-              </div>
-            </div>
+        {/* Two-Column Layout Container */}
+        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-5 bg-white dark:bg-gray-800 rounded-xl shadow-2xl overflow-hidden border-t-8 border-primary-indigo">
+            
+            {/* Left Column: Admission Form (Takes 3/5 width on large screens) */}
+            <div className="lg:col-span-3 p-8">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                    {/* Student Information */}
+                    <h2 className="text-2xl font-semibold border-b pb-2 text-primary-indigo dark:text-accent-gold">1. Student Details</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <label htmlFor="studentName" className="block text-sm font-medium mb-1">Full Name</label>
+                            <input type="text" id="studentName" name="studentName" value={formData.studentName} onChange={handleChange} required className="w-full p-3 border rounded-lg focus:ring-accent-gold focus:border-accent-gold dark:bg-gray-700 dark:border-gray-600 transition duration-200" />
+                        </div>
+                        <div>
+                            <label htmlFor="dateOfBirth" className="block text-sm font-medium mb-1">Date of Birth</label>
+                            <input type="date" id="dateOfBirth" name="dateOfBirth" value={formData.dateOfBirth} onChange={handleChange} required className="w-full p-3 border rounded-lg focus:ring-accent-gold focus:border-accent-gold dark:bg-gray-700 dark:border-gray-600 transition duration-200" />
+                        </div>
+                        <div>
+                            <label htmlFor="gradeApplyingFor" className="block text-sm font-medium mb-1">Grade Applying For</label>
+                            <input type="text" id="gradeApplyingFor" name="gradeApplyingFor" value={formData.gradeApplyingFor} onChange={handleChange} required className="w-full p-3 border rounded-lg focus:ring-accent-gold focus:border-accent-gold dark:bg-gray-700 dark:border-gray-600 transition duration-200" />
+                        </div>
+                    </div>
 
-            {/* Parent/Guardian Information */}
-            <h2 className="text-2xl font-semibold border-b pb-2 text-primary-indigo dark:text-accent-gold pt-4">2. Parent Contact</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label htmlFor="parentName" className="block text-sm font-medium mb-1">Parent's Full Name</label>
-                <input type="text" id="parentName" name="parentName" value={formData.parentName} onChange={handleChange} required className="w-full p-3 border rounded-lg focus:ring-accent-gold focus:border-accent-gold dark:bg-gray-700 dark:border-gray-600 transition duration-200" />
-              </div>
-              <div>
-                <label htmlFor="parentPhone" className="block text-sm font-medium mb-1">Phone Number</label>
-                <input type="tel" id="parentPhone" name="parentPhone" value={formData.parentPhone} onChange={handleChange} required className="w-full p-3 border rounded-lg focus:ring-accent-gold focus:border-accent-gold dark:bg-gray-700 dark:border-gray-600 transition duration-200" />
-              </div>
-            </div>
+                    {/* Parent/Guardian Information */}
+                    <h2 className="text-2xl font-semibold border-b pb-2 text-primary-indigo dark:text-accent-gold pt-4">2. Parent Contact</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label htmlFor="parentName" className="block text-sm font-medium mb-1">Parent's Full Name</label>
+                            <input type="text" id="parentName" name="parentName" value={formData.parentName} onChange={handleChange} required className="w-full p-3 border rounded-lg focus:ring-accent-gold focus:border-accent-gold dark:bg-gray-700 dark:border-gray-600 transition duration-200" />
+                        </div>
+                        <div>
+                            <label htmlFor="parentPhone" className="block text-sm font-medium mb-1">Phone Number</label>
+                            <input type="tel" id="parentPhone" name="parentPhone" value={formData.parentPhone} onChange={handleChange} required className="w-full p-3 border rounded-lg focus:ring-accent-gold focus:border-accent-gold dark:bg-gray-700 dark:border-gray-600 transition duration-200" />
+                        </div>
+                    </div>
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full p-4 mt-6 bg-primary-indigo text-white font-bold rounded-full shadow-xl hover:bg-accent-gold hover:text-text-dark transition-all duration-300 transform hover:scale-[1.01] disabled:bg-gray-500"
-            >
-              {loading ? 'Submitting...' : 'Submit Application'}
-            </button>
-          </form>
+                    <button
+                        type="submit"
+                        disabled={loading}
+                        className="w-full p-4 mt-6 bg-primary-indigo text-white font-bold rounded-full shadow-xl hover:bg-accent-gold hover:text-text-dark transition-all duration-300 transform hover:scale-[1.01] disabled:bg-gray-500"
+                    >
+                        {loading ? 'Submitting...' : 'Submit Application'}
+                    </button>
+                </form>
+            </div>
+            
+            {/* Right Column: Image (Takes 2/5 width on large screens) */}
+            <div className="lg:col-span-2 hidden lg:block">
+                <img
+                    src={admissionImageUrl}
+                    alt="Students walking in school hallway"
+                    className="w-full h-full object-cover"
+                />
+            </div>
         </div>
       </div>
     </div>
