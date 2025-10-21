@@ -20,12 +20,17 @@ function Home() {
     <div id="home" className="text-gray-900 dark:text-white transition-colors duration-500">
       
       {/* Hero Section: Dynamic Image Carousel with Overlay Text */}
-      <div className="relative w-full h-[60vh] overflow-hidden">
+      {/* Adjusted heights for better responsiveness on different screen sizes */}
+      <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[450px] xl:h-[550px] overflow-hidden">
        
         <img
           src={images[currentImageIndex]}
           alt="SRI MAMATHA SCHOOL"
-          className="w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
+          // object-cover will ensure the image fills the entire designated area (width and height)
+          // It will scale the image to cover the entire container, potentially cropping parts
+          // of the image if its aspect ratio doesn't match the container's.
+          // This is generally preferred for hero images to avoid blank spaces.
+          className="w-full h-full object-cover object-center transition-opacity duration-1000 ease-in-out" 
         />
         {/* Modern dark overlay for text contrast and depth */}
         <div className="absolute inset-0 bg-black opacity-30"></div> 
