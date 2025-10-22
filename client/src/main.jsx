@@ -5,7 +5,11 @@ import './index.css'
 import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from './context/ThemeContext.jsx' 
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+// Find the root element
+const rootElement = document.getElementById('root');
+
+// --- UPDATED: Mount directly to the body, ignoring the default wrapper size ---
+ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
     <BrowserRouter>
       <ThemeProvider>
