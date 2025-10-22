@@ -72,7 +72,7 @@ function AdmissionForm() {
         </div>
         
         {message && (
-          <div className={`p-4 mb-6 rounded-lg text-center font-medium max-w-5xl mx-auto ${message.includes('successfully') ? 'bg-green-100 text-green-700 dark:bg-green-800 dark:text-green-200' : 'bg-red-100 text-red-700 dark:bg-red-800 dark:text-red-200'}`}>
+          <div className={`p-4 mb-6 rounded-lg text-center font-medium max-w-5xl mx-auto ${message.includes('successfully') ? 'bg-green-100 text-green-700 dark:bg-green-800 dark:text-green-200' : 'bg-accent-red/10 text-accent-red dark:bg-accent-red/20 dark:text-red-300'}`}>
             {message}
           </div>
         )}
@@ -88,15 +88,15 @@ function AdmissionForm() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div>
                             <label htmlFor="studentName" className="block text-sm font-medium mb-1">Full Name</label>
-                            <input type="text" id="studentName" name="studentName" value={formData.studentName} onChange={handleChange} required className="w-full p-3 border rounded-lg focus:ring-accent-gold focus:border-accent-gold dark:bg-gray-700 dark:border-gray-600 transition duration-200" />
+                            <input type="text" id="studentName" name="studentName" value={formData.studentName} onChange={handleChange} required className="w-full p-3 border rounded-lg focus:ring-accent-red focus:border-accent-red dark:bg-gray-700 dark:border-gray-600 transition duration-200" />
                         </div>
                         <div>
                             <label htmlFor="dateOfBirth" className="block text-sm font-medium mb-1">Date of Birth</label>
-                            <input type="date" id="dateOfBirth" name="dateOfBirth" value={formData.dateOfBirth} onChange={handleChange} required className="w-full p-3 border rounded-lg focus:ring-accent-gold focus:border-accent-gold dark:bg-gray-700 dark:border-gray-600 transition duration-200" />
+                            <input type="date" id="dateOfBirth" name="dateOfBirth" value={formData.dateOfBirth} onChange={handleChange} required className="w-full p-3 border rounded-lg focus:ring-accent-red focus:border-accent-red dark:bg-gray-700 dark:border-gray-600 transition duration-200" />
                         </div>
                         <div>
                             <label htmlFor="gradeApplyingFor" className="block text-sm font-medium mb-1">Grade Applying For</label>
-                            <input type="text" id="gradeApplyingFor" name="gradeApplyingFor" value={formData.gradeApplyingFor} onChange={handleChange} required className="w-full p-3 border rounded-lg focus:ring-accent-gold focus:border-accent-gold dark:bg-gray-700 dark:border-gray-600 transition duration-200" />
+                            <input type="text" id="gradeApplyingFor" name="gradeApplyingFor" value={formData.gradeApplyingFor} onChange={handleChange} required className="w-full p-3 border rounded-lg focus:ring-accent-red focus:border-accent-red dark:bg-gray-700 dark:border-gray-600 transition duration-200" />
                         </div>
                     </div>
 
@@ -105,18 +105,18 @@ function AdmissionForm() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label htmlFor="parentName" className="block text-sm font-medium mb-1">Parent's Full Name</label>
-                            <input type="text" id="parentName" name="parentName" value={formData.parentName} onChange={handleChange} required className="w-full p-3 border rounded-lg focus:ring-accent-gold focus:border-accent-gold dark:bg-gray-700 dark:border-gray-600 transition duration-200" />
+                            <input type="text" id="parentName" name="parentName" value={formData.parentName} onChange={handleChange} required className="w-full p-3 border rounded-lg focus:ring-accent-red focus:border-accent-red dark:bg-gray-700 dark:border-gray-600 transition duration-200" />
                         </div>
                         <div>
                             <label htmlFor="parentPhone" className="block text-sm font-medium mb-1">Phone Number</label>
-                            <input type="tel" id="parentPhone" name="parentPhone" value={formData.parentPhone} onChange={handleChange} required className="w-full p-3 border rounded-lg focus:ring-accent-gold focus:border-accent-gold dark:bg-gray-700 dark:border-gray-600 transition duration-200" />
+                            <input type="tel" id="parentPhone" name="parentPhone" value={formData.parentPhone} onChange={handleChange} required className="w-full p-3 border rounded-lg focus:ring-accent-red focus:border-accent-red dark:bg-gray-700 dark:border-gray-600 transition duration-200" />
                         </div>
                     </div>
 
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full p-4 mt-6 bg-primary-indigo text-white font-bold rounded-full shadow-xl hover:bg-accent-gold hover:text-text-dark transition-all duration-300 transform hover:scale-[1.01] disabled:bg-gray-500"
+                        className="w-full p-4 mt-6 bg-accent-red text-white font-bold rounded-full shadow-xl hover:bg-primary-indigo transition-all duration-300 transform hover:scale-[1.01] disabled:bg-gray-500"
                     >
                         {loading ? 'Submitting...' : 'Submit Application'}
                     </button>

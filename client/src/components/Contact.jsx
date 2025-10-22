@@ -11,6 +11,14 @@ function Contact() {
   const [submitMessage, setSubmitMessage] = useState('');
   const [loading, setLoading] = useState(false);
 
+  // Define custom text color for high contrast on light gradient boxes
+  const cardTextColor = {
+    color: '#111827', // Text dark/black for contrast
+  };
+  
+  // Define input class for styling consistency
+  const inputClasses = "w-full p-3 border rounded-lg focus:ring-accent-red focus:border-accent-red transition duration-200";
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
@@ -25,6 +33,7 @@ function Contact() {
     setSubmitMessage('');
 
     try {
+      // NOTE: Using localhost here, ensure this is updated to your production endpoint in a final build.
       await axios.post('https://mamathaschool.onrender.com/api/contact', formData);
       setSubmitMessage(
         'Thank you for your message! We will get back to you shortly.'
@@ -41,16 +50,17 @@ function Contact() {
   };
 
   return (
+    // Outer container: Dark Blue to Light Blue Gradient: #000046 → #1cb5e0
     <div
       id="contact"
-      className="py-16 bg-white dark:bg-gray-900 text-text-dark dark:text-white transition-colors duration-500"
+      className="py-16 text-white transition-colors duration-500 bg-gradient-to-br from-[#000046] to-[#1cb5e0] dark:from-bg-dark-slate dark:to-gray-900"
     >
       <div className="container mx-auto px-4 md:px-8">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-extrabold mb-2 text-primary-indigo dark:text-accent-gold">
+          <h1 className="text-4xl sm:text-5xl font-extrabold mb-2 text-accent-gold dark:text-accent-red">
             Get In Touch
           </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-400">
+          <p className="text-lg sm:text-xl text-gray-200 dark:text-gray-400">
             We are here to answer your questions.
           </p>
         </div>
@@ -68,12 +78,15 @@ function Contact() {
         )}
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          {/* Contact Information Column */}
-          <div className="lg:col-span-1 p-6 bg-primary-indigo text-white rounded-xl shadow-2xl">
-            <h3 className="text-2xl font-bold mb-4 border-b-2 border-accent-gold pb-2">
+          {/* Contact Information Column - Vibrant Gradient Box */}
+          <div 
+            className="lg:col-span-1 p-6 rounded-xl shadow-2xl"
+            style={{ backgroundImage: 'linear-gradient(to right, #f2994a, #f2c94c)' }} // Orange-to-Gold
+          >
+            <h3 className="text-2xl font-bold mb-4 border-b-2 border-primary-indigo pb-2" style={cardTextColor}>
               Our Details
             </h3>
-            <div className="space-y-4 text-lg">
+            <div className="space-y-4 text-lg" style={cardTextColor}>
               <p>
                 <strong>Address:</strong> Chataparru, West Godavari ,534004
               </p>
@@ -85,12 +98,12 @@ function Contact() {
               </p>
             </div>
 
-            <h3 className="text-2xl font-bold mt-8 mb-4 border-b-2 border-accent-gold pb-2">
+            <h3 className="text-2xl font-bold mt-8 mb-4 border-b-2 border-primary-indigo pb-2" style={cardTextColor}>
               Location
             </h3>
-            <div className="rounded-lg overflow-hidden h-64 shadow-xl">
+            <div className="rounded-lg overflow-hidden h-64 shadow-xl border-4 border-primary-indigo">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3821.605444701561!2d81.16390071145018!3d16.69661608401113!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a363f50ff3d1bf1%3A0x5f1261ae62d5c730!2sSri%20Mamatha%20School!5e0!3m2!1sen!2sin!4v1759252664854!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3821.605444701561!2d81.1639007145018!3d16.69661608401113!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a363f50ff3d1bf1%3A0x5f1261ae62d5c730!2sSri%20Mamatha%20School!5e0!3m2!1sen!2sin!4v1759252664854!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -101,13 +114,16 @@ function Contact() {
             </div>
           </div>
 
-          {/* Contact Form Column */}
-          <div className="lg:col-span-2 p-8 bg-bg-light dark:bg-gray-800 rounded-xl shadow-2xl border-t-8 border-accent-gold">
-            <h2 className="text-3xl font-bold mb-6 text-primary-indigo dark:text-accent-gold">
+          {/* Contact Form Column - Vibrant Gradient Box */}
+          <div 
+            className="lg:col-span-2 p-8 rounded-xl shadow-2xl border-t-8 border-primary-indigo"
+            style={{ backgroundImage: 'linear-gradient(to right, #f2994a, #f2c94c)' }} // Orange-to-Gold
+          >
+            <h2 className="text-3xl font-bold mb-6 text-primary-indigo" style={cardTextColor}>
               Send Us A Message
             </h2>
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6" style={cardTextColor}>
                 <div>
                   <label
                     htmlFor="name"
@@ -122,7 +138,7 @@ function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full p-3 border rounded-lg focus:ring-accent-gold focus:border-accent-gold dark:bg-gray-700 dark:border-gray-600 transition duration-200"
+                    className={inputClasses}
                   />
                 </div>
                 <div>
@@ -139,11 +155,11 @@ function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full p-3 border rounded-lg focus:ring-accent-gold focus:border-accent-gold dark:bg-gray-700 dark:border-gray-600 transition duration-200"
+                    className={inputClasses}
                   />
                 </div>
               </div>
-              <div>
+              <div style={cardTextColor}>
                 <label
                   htmlFor="message"
                   className="block text-sm font-medium mb-1"
@@ -157,13 +173,13 @@ function Contact() {
                   onChange={handleChange}
                   required
                   rows="4"
-                  className="w-full p-3 border rounded-lg focus:ring-accent-gold focus:border-accent-gold dark:bg-gray-700 dark:border-gray-600 transition duration-200"
+                  className={inputClasses}
                 ></textarea>
               </div>
               <button
                 type="submit"
                 disabled={loading}
-                className="p-4 bg-primary-indigo text-white font-bold rounded-full shadow-xl hover:bg-accent-gold hover:text-text-dark transition-all duration-300 transform hover:scale-[1.01] disabled:bg-gray-500"
+                className="p-4 bg-primary-indigo text-white font-bold rounded-full shadow-xl hover:bg-accent-red hover:text-white transition-all duration-300 transform hover:scale-[1.01] disabled:bg-gray-500 w-full"
               >
                 {loading ? 'Sending...' : 'Send Message'}
               </button>

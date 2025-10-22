@@ -8,7 +8,7 @@ import About from './About.jsx';
 import Academics from './Academics.jsx';
 import Gallery from './Gallery.jsx';
 import Contact from './Contact.jsx';
-import AdmissionForm from './AdmissionForm.jsx';
+import AdmissionForm from './AdmissionForm.jsx'; // This line is likely the source of the error if AdmissionForm does not export default
 import Popup from './Popup.jsx';
 
 function MainLayout() {
