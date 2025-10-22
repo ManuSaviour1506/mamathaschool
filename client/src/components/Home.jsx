@@ -2,8 +2,13 @@ import React, { useState, useEffect } from 'react';
 
 function Home() {
   const images = [
-    'https://res.cloudinary.com/ddgfjerss/image/upload/v1760810488/Gemini_Generated_Image_9t5lso9t5lso9t5l_elddix.jpg',
-   // Placeholder
+    // Change this path to point to your image inside the 'public' folder
+    '/header1 copy.png', 
+    '/hero2 copy.png',
+    '/hero3.png',
+    '/hero4.png',
+
+    // Add other images from the public folder if you have them, e.g., '/another_image.jpg'
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -20,16 +25,11 @@ function Home() {
     <div id="home" className="text-gray-900 dark:text-white transition-colors duration-500">
       
       {/* Hero Section: Dynamic Image Carousel with Overlay Text */}
-      {/* Adjusted heights for better responsiveness on different screen sizes */}
       <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[450px] xl:h-[550px] overflow-hidden">
        
         <img
           src={images[currentImageIndex]}
           alt="SRI MAMATHA SCHOOL"
-          // object-cover will ensure the image fills the entire designated area (width and height)
-          // It will scale the image to cover the entire container, potentially cropping parts
-          // of the image if its aspect ratio doesn't match the container's.
-          // This is generally preferred for hero images to avoid blank spaces.
           className="w-full h-full object-cover object-center transition-opacity duration-1000 ease-in-out" 
         />
         {/* Modern dark overlay for text contrast and depth */}
