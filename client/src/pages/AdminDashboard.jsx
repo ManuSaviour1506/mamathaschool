@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ManageGallery from '../components/admin/ManageGallery';
-import ManageTestimonials from '../components/admin/ManageTestimonials';
-import ManageAdmissions from '../components/admin/ManageAdmissions';
 import ManageContacts from '../components/admin/ManageContacts';
 
 const dashboardStyles = {
@@ -29,17 +27,11 @@ function AdminDashboard() {
           {/* Gallery Management Section */}
           <ManageGallery />
           
-          {/* Testimonial Management Section */}
-          <ManageTestimonials />
-        </div>
-        
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Admissions Management Section */}
-          <ManageAdmissions />
-
           {/* Contact Management Section */}
           <ManageContacts />
         </div>
+        
+        {/* Admissions and Testimonials management removed per user request */}
       </div>
     </div>
   );

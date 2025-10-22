@@ -42,7 +42,7 @@ function MainLayout() {
         <About />
         <Academics />
         <Gallery />
-        <AdmissionForm />
+       
         <Contact />
       </main>
       <Footer />
