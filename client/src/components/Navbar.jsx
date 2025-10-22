@@ -89,11 +89,11 @@ function Navbar() {
           
           {/* LEFT: Logo */}
           <div className="flex items-center space-x-2 relative z-10 justify-start">
-            <div className="flex-shrink-0">
+            <div className="flex-shrink-0 bg-transparent">
               <img
                 src="/mamathalogo1.svg" 
                 alt="School Logo"
-                className="h-12 w-12 md:h-24 md:w-24"
+                className="h-12 w-12 md:h-24 md:w-24 bg-transparent"
               />
             </div>
           </div>
