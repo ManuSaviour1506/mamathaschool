@@ -53,11 +53,13 @@ function Navbar() {
           {/* LEFT: Logo and Smaller Name for Mobile */}
           <div className="flex items-center space-x-3 relative z-10">
             <div className="flex-shrink-0">
+
               <img
-                src="https://res.cloudinary.com/ddgfjerss/image/upload/v1760809093/NEWLOGOBGR_lnks2s.svg"
+                src="/mamathalogo1.svg" // Changed to use the file from the public folder
                 alt="School Logo"
                 className="h-20 w-20"
               />
+              {/* === END OF CHANGE === */}
             </div>
             {/* Applied NEW gradient styling for mobile view */}
             <div 
@@ -66,6 +68,15 @@ function Navbar() {
             >
               SRI MAMATHA SCHOOL
             </div>
+
+            {/* Applied NEW gradient styling for mobile view */}
+            <div 
+              className="text-lg font-extrabold tracking-wider whitespace-nowrap md:hidden bg-clip-text text-transparent"
+              style={schoolNameGradientStyle}
+            >
+              SRI MAMATHA SCHOOL
+            </div>
+        
           </div>
 
           {/* CENTER: LARGE School Name (Desktop Only, Centered) */}
