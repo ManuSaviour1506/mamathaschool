@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 function Home() {
   const images = [
     '/header1 copy.png',
-    '/hero2 copy.png',
-    '/hero3.png',
+    '/updatedhero2.png',
+    '/updatedhero3.png',
     '/hero4.png',
   ];
 
