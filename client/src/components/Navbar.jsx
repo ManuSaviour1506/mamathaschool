@@ -57,7 +57,6 @@ function Navbar() {
     { name: 'About Us', path: '#about' },
     { name: 'Academics', path: '#academics' },
     { name: 'Gallery', path: '#gallery' },
-    { name: 'Admission', path: '#admission' },
     { name: 'Contact', path: '#contact' },
   ];
 
