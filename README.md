@@ -10,20 +10,6 @@ A production-ready **full-stack MERN (MongoDB, Express, React, Node.js) web appl
 
 Designed and implemented a **custom Content Management System (CMS)** to enable non-technical administrators to manage website content independently. The platform improves accessibility, streamlines content updates, and enhances the institution’s digital presence.
 
----
-
-
-The institution lacked a centralized digital system to:
-
-- Manage announcements and updates  
-- Maintain student and staff information  
-- Share events and media with the public  
-
-This resulted in dependency on developers for routine updates, reducing efficiency.
-
----
-
-## 💡 Solution
 
 Developed a scalable CMS platform that allows administrators to:
 
