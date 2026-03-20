@@ -12,7 +12,6 @@ Designed and implemented a **custom Content Management System (CMS)** to enable 
 
 ---
 
-## 🎯 Problem Statement
 
 The institution lacked a centralized digital system to:
 
