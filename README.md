@@ -82,7 +82,7 @@ This project was delivered as a **free service** to support:
 - Community development programs  
 - Digital transformation for non-profit institutions  
 
-It demonstrates the application of technology for meaningful societal impact.
+Technology used for meaningful impact beyond commercial use.
 
 ---
 
